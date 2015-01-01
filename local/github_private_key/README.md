@@ -17,12 +17,12 @@ get_private_key.sh
 
 **update .travis.yml**
 
-- update yaml key: 'env.global.GH_TOKEN'
+- update yaml key: **env.global.secure**
 ```bash
 encrypt_private_key_for_use_in_travis.sh
 ```
 
-- update yaml key: 'on_success'
+- update yaml key: **on_success**
 ```bash
 github_private_key.sh
 ```
