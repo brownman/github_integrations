@@ -45,21 +45,16 @@ clone1(){
 }
 
 rm2(){
-  #test -d old || { mkdir old; }
-  #mv *.* old/
   git rm -rf *
 }
 
 override1(){
-  commander cd $dir_gh_pages
   #commander rm2
-  local dir_new=build/$TRAVIS_BUILD_NUMBER
+  local dir_new=$dir_gh_pages/build/$TRAVIS_BUILD_NUMBER
   mkdir -p $dir_new
-  #
-  ##mv  $dir_product $dir_new/media #/* files
-  ##mv /tmp/log $dir_new/log
+
   ### summary
-  ls -lR --sort=size $dir_new > $dir_new/log.txt  #_${TRAVIS_BUILD_NUMBER}.txt
+  ls -lR --sort=size $dir_product > $dir_new/log.txt  #_${TRAVIS_BUILD_NUMBER}.txt
   mv $dir_product $dir_new/
 }
 
