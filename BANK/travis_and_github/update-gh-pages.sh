@@ -35,9 +35,6 @@ clone1(){
     git checkout -B $branch
     git add -f .  
   fi
-  
-  rm2
-  
 }
 
 rm2(){
