@@ -28,10 +28,10 @@ install:
   - echo let us start
 
 script:
-  - bash -c ./travis.sh
+  - bash -e ./travis.sh
   
 after_success:
-  -  bash -c ./BANK/travis_and_github/update-gh-pages.sh
+  -  bash -e ./BANK/travis_and_github/update-gh-pages.sh
 
 
 
