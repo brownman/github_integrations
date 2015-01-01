@@ -86,6 +86,7 @@ steps(){
 commander cd $HOME
 
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+  commander echo $PWD
   commander debug_git
   commander setup_git_global
   commander setup_git_local
