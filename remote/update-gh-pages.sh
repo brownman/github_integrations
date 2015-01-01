@@ -45,8 +45,7 @@ clone1(){
   if [ $res -eq 0 ];then
     trace git clone
     git clone --depth=1 --quiet --branch=$branch https://${GH_TOKEN}@github.com/$owner/$repo.git $dir_gh_pages > /dev/null 
-    override1
-    push1
+
   else
     commander dir_gh_pages=$HOME
     trace git checkout
@@ -91,6 +90,8 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   commander setup_git_global
   commander setup_git_local
   commander clone1
+  commander override1
+  commander push1
 fi
 }
 
