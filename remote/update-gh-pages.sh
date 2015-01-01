@@ -73,7 +73,6 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   
   override1
   push1
-  test1
 fi
 }
 
