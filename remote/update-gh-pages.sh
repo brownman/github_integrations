@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -u
-exec 2>/tmp/err
+#exec 2>/tmp/err
 
 #config
 branch='gh-pages'
@@ -83,12 +83,13 @@ push1(){
 
 
 steps(){
-cd $HOME
+commander cd $HOME
 
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-  setup_git_global
-  setup_git_local
-  clone1
+  commander debug_git
+  commander setup_git_global
+  commander setup_git_local
+  commander clone1
 fi
 }
 
