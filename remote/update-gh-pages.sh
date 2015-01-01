@@ -5,7 +5,8 @@ set -u
 #config
 branch='gh-pages'
 dir_product=${dir_product:-/tmp/product}
-dir_gh_pages=/tmp/gh_pages
+dir_gh_pages=$PWD
+#/tmp/gh_pages
 
 
 #ensure
@@ -36,7 +37,7 @@ clone1(){
   
   local res=0
   echo "Starting to update $branch"
-  commander cd $HOME
+#  commander cd $HOME
   #git checkout -B gh_pages
   $( git branch -r | grep $branch )
   res=$?
@@ -45,9 +46,8 @@ clone1(){
   if [ $res -eq 0 ];then
     trace git clone
     git clone --depth=1 --quiet --branch=$branch https://${GH_TOKEN}@github.com/$owner/$repo.git $dir_gh_pages > /dev/null 
-
   else
-    commander dir_gh_pages=$HOME
+   # commander dir_gh_pages=$HOME
     trace git checkout
     commander git checkout -B $branch
   fi
