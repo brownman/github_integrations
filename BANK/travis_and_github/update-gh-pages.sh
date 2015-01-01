@@ -27,7 +27,7 @@ clone1(){
   #git checkout -B gh_pages
   $( git branch -r | grep $branch )
   res=$?
-  commander cd dir_gh_pages
+  commander cd $dir_gh_pages
   
   if [ $res -eq 0 ];then
     git clone --depth=1 --quiet --branch=gh-pages https://${GH_TOKEN}@github.com/$owner/$repo.git . > /dev/null 
