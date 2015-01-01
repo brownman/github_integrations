@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-export MODE=${remote:-local}
+export MODE=${1:-remote}
 
 dir_self=$( cd `dirname $0`; pwd )
 chmod u+x *.sh . -R
