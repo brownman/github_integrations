@@ -13,5 +13,7 @@ $dir_self/ensure.sh || {
   echo 'YOU NEED TO UPDATE .travis.yml;';
   echo 'HELP YOURSELF BY VISITING:';
   echo 'https://github.com/brownman/github_integrations';
+  exit 1;
 }
 
+bash -c $dir_self/BANK/travis_and_github/update-gh-pages.sh; 
