@@ -1,4 +1,12 @@
 github_integrations
 ===================
 
-explore services which integrate with github
+steps:
+----
+- integrate github + travis: deploy static-website to branch:gh_pages
+
+
+
+
+- explore services which integrate with github
+- [link](https://github.com/travis-ci/github-services/tree/master/docs)
