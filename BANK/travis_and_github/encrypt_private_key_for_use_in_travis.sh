@@ -11,7 +11,7 @@ set -u
 test $# -eq 3 || { echo supply info: user , repo , private_key; exit 0; }
 user=$1
 repository=$2
-private_key=$2
+private_key=$3
 
 some_other_passwords='gmail_password=blabla twitter_password=blablabla'
 
