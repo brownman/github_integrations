@@ -16,4 +16,4 @@ $dir_self/ensure.sh || {
   exit 1;
 }
 
-bash -c $dir_self/BANK/travis_and_github/update-gh-pages.sh; 
+bash -c $dir_self/travis/update-gh-pages.sh; 
