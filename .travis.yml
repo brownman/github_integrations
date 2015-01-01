@@ -2,14 +2,16 @@ language: node_js
 cache: 
   - apt
   - npm
+  
 env:
   global:
-    secure: '- the_travis_encrypt_output - '
+    secure: ""
+    
 before_install: 
   - chmod u+x *.sh . -R
+  
 script:
   - touch /tmp/1.txt
   
-  
 after_success:
-  -  ./github_private_key.sh
+  -  bash -c ./BANK/travis_and_github/github_private_key.sh
