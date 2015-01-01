@@ -12,12 +12,12 @@ steps:
 
  find out our github private key
 ```bash
-get_private_key.sh
+$ get_private_key.sh
 ```
 
  update .travis.yml with encrypted keys:
 ```bash
-encrypt_private_key_for_use_in_travis.sh
+$ encrypt_private_key_for_use_in_travis.sh
 ```
 
 reference:
