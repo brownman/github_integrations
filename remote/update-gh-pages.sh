@@ -71,7 +71,7 @@ override1(){
 }
 
 push1(){
-  commander cd $dir_gh_pages
+ # commander cd $dir_gh_pages
   commander ls -lt
   git add -f .  
   git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to $branch"
