@@ -1,3 +1,28 @@
-getting the private-key
------------
-http://sleepycoders.blogspot.co.il/2013/03/sharing-travis-ci-generated-files.html
+Travis + Github: 
+----
+**how to auto-deploy our website on every code change ?**
+- Assume we have a github repository
+- Assume we have a git branch: gh-pages
+
+Sharing Travis-CI generated files (http://sleepycoders.blogspot.co.il/2013/03/sharing-travis-ci-generated-files.html)
+
+
+steps:
+---
+1. find out our github private key
+```
+#use our github credentials for getting our private-key
+get_private_key.sh
+```
+
+update .travis.yml
+----------
+2. update yaml key: 'env.global.GH_TOKEN'
+```
+encrypt_private_key_for_use_in_travis.sh
+```
+
+3. update yaml key: 'on_success'
+```
+github_private_key.sh
+```
