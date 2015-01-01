@@ -21,4 +21,4 @@ encrypt_private_key_for_use_in_travis.sh
 
 reference:
 ---
- Sharing Travis-CI generated files (http://sleepycoders.blogspot.co.il/2013/03/sharing-travis-ci-generated-files.html)
+ [Sharing Travis-CI generated files](http://sleepycoders.blogspot.co.il/2013/03/sharing-travis-ci-generated-files.html)
