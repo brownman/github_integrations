@@ -9,6 +9,11 @@ Travis + Github:
 
 steps:
 ---
+ get some dependencies to make life easier
+```bash
+gem install travis
+sudo apt-get install xsel
+```
 
  find out our github private key
 ```bash
