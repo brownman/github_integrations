@@ -6,10 +6,12 @@ set -u
 #CONFIG
 user=${1:-$user}
 repository=${2:-$repository}
-dir_product="$HOME/coverage"
+dir_product="/tmp/product"
 dir_to_refresh=gh-pages
 flag_rm_old=true
 
+test -d $dir_product || { mkdir -p $dir_product; }
+echo 'example' >> $dir_product/example.txt
 
 
 update-gh-pages(){
@@ -17,7 +19,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   echo -e "Starting to update gh-pages\n"
 
   #copy data we're interested in to other place
-  cp -R coverage $HOME/coverage
+#  cp -R coverage $HOME/coverage
 
   #go to home and setup git
   cd $HOME
