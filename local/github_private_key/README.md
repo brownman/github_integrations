@@ -15,9 +15,7 @@ steps:
 get_private_key.sh
 ```
 
-**update .travis.yml**
-
- update yaml key: **env.global.secure**
+ update .travis.yml: 
 ```bash
 encrypt_private_key_for_use_in_travis.sh
 ```
