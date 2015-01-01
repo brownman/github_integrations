@@ -3,7 +3,7 @@
 
 #shopt -s expand_aliases
 set -u
-alias commander=eval
+#alias commander=eval
 dir_product=${dir_product:-/tmp/product}
 test -d $dir_product || { mkdir -p $dir_product; }
 branch='gh-pages'
