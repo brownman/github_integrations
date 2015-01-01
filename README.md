@@ -4,20 +4,12 @@ github [integrations](https://github.com/travis-ci/github-services/tree/master/d
 ===================
 
 
-Installation: 
+**Mission:** 
+- setup a github repository with travis
+- configure travis to deploy your products(like: static website) to github-pages 
+
+steps
 ----
 - go to your github repo
-- create a file: .travis.yml
-- copy and paste from this [example](https://github.com/brownman/test_github_integrations/blob/master/.travis.yml)
-- update the secure key 
-- [need help?](https://github.com/brownman/github_integrations/tree/master/local)
-
-
-
-Examples:
-------
-- [travis deploy](https://github.com/brownman/github_integrations/tree/master/BANK/travis_and_github)
-
-
-
- 
+- create a file: .travis.yml similar to [this](https://github.com/brownman/test_github_integrations/blob/master/.travis.yml)
+- update .travis.yml with your encrypted github-private-key ([need help?](https://github.com/brownman/github_integrations/tree/master/local)
