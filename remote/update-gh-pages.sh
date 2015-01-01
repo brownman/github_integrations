@@ -14,7 +14,7 @@ test -v repo
 test -d $dir_product || { mkdir -p $dir_product; }
 test -d $dir_gh_pages || { mkdir -p $dir_gh_pages; }
 
-debug1(){
+debug_git(){
   local dir=$1
   test -f $dir/.git/config && { cat $dir/.git/config; } 
  # env
@@ -26,6 +26,7 @@ setup_git_global(){
   git config --global user.name "Travis"
 }
 setup_git_local(){
+  debug_git $PWD
    git config credential.helper "store --file=.git/credentials"
   echo "https://${GH_TOKEN}:@github.com" > .git/credentials
 }
