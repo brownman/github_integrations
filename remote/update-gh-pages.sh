@@ -15,7 +15,7 @@ test -d $dir_product || { mkdir -p $dir_product; }
 test -d $dir_gh_pages || { mkdir -p $dir_gh_pages; }
 
 debug_git(){
-  local dir=${1:$PWD}
+  local dir=${1:-$PWD}
   test -f $dir/.git/config && { cat $dir/.git/config; } 
  # env
 }
