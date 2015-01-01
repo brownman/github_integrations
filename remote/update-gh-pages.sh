@@ -7,19 +7,25 @@ branch='gh-pages'
 dir_product=${dir_product:-/tmp/product}
 dir_gh_pages=/tmp/gh_pages
 
+
 #ensure
+test -v owner
+test -v repo
 test -d $dir_product || { mkdir -p $dir_product; }
 test -d $dir_gh_pages || { mkdir -p $dir_gh_pages; }
 
 debug1(){
-  test -f .git/config && { cat .git/config; } 
+  local dir=$1
+  test -f $dir/.git/config && { cat $dir/.git/config; } 
  # env
 }
 
 setup_git(){
-  #cd $HOME
+  cd $HOME
   git config --global user.email "travis@travis-ci.org"
   git config --global user.name "Travis"
+  git config credential.helper "store --file=.git/credentials"
+  echo "https://${GH_TOKEN}:@github.com" > .git/credentials
 }
 
 clone1(){
@@ -45,7 +51,8 @@ rm2(){
 
 override1(){
   #commander rm2
-  local dir_new=$dir_gh_pages/build/$TRAVIS_BUILD_NUMBER
+  local dir_new
+  dir_new="$dir_gh_pages/build/$TRAVIS_BUILD_NUMBER"
   mkdir -p $dir_new
 
   ### summary
@@ -63,11 +70,9 @@ push1(){
 
 
 steps(){
-git config credential.helper "store --file=.git/credentials"
-echo "https://${GH_TOKEN}:@github.com" > .git/credentials
+
 
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-  debug1
   setup_git
   clone1
   
