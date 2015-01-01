@@ -83,13 +83,12 @@ push1(){
 
 
 steps(){
-
+cd $HOME
 
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   setup_git_global
+  setup_git_local
   clone1
-  
-
 fi
 }
 
