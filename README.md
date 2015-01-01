@@ -6,7 +6,7 @@ github [integrations](https://github.com/travis-ci/github-services/tree/master/d
 
 Examples:
 ------
-- [travis deploy](https://github.com/brownman/github_integrations/tree/master/local/github_private_key)
+- [travis deploy](https://github.com/brownman/github_integrations/tree/master/BANK/travis_and_github)
 
 
 

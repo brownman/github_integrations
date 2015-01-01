@@ -1,21 +1,38 @@
 language: node_js 
 env:
     global:
-        secure: "SItLPGZopQ4w5zM6CS1hqm3vb6YOlOU38zytIr9v5VC1TpcBwLi5PJxraqhVskEZ/MMqAiKBnzbxIbzBHLHLTHTOKyVstA6mJuUr8jyst5qtZ3foGwch943vLEDYnBwEiYfjgxFnUAXfl+xEStTf49yt+PEce2R24ym+49YKtig="
-
+        secure: "L9vqq1qTZwNZbV6fk4gwV5G9atm95MQxs4jkFpC5aADcliiJLKKbPW/hNLJijMmzQFdqEL8Zz7HFOtgyKWG7RFWOkmpA2xk1A72qfwmMwmVqMnpYhdjeW6GzqGj7Tufna1/48p/77UHq1yJK6RuxyEtB4SN8UdPbO8NnTPwA/mw="
 cache: 
   - apt
   - npm
-  
-env:
-  global:
-    secure: ""
     
-before_install: 
-  - chmod u+x *.sh . -R
+matrix:
+  fast_finish: true
   
+# whitelist
+branches:
+  only:
+    - master
+    
+before_install:
+  - echo before install
+  #- export owner=brownman
+  #- export repo=github_integrations
+  - source config.cfg
+  - chmod u+x *.sh . -R
+
+  
+
+  
+install:
+  - echo let us start
+
 script:
-  - touch /tmp/1.txt
+  - bash -c ./travis.sh
   
 after_success:
-  -  bash -c ./BANK/travis_and_github/github_private_key.sh
+  -  bash -c ./BANK/travis_and_github/update-gh-pages.sh
+
+
+
+
