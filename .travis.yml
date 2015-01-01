@@ -1,0 +1,15 @@
+language: node_js 
+cache: 
+  - apt
+  - npm
+env:
+  global:
+    secure: '- the_travis_encrypt_output - '
+before_install: 
+  - chmod +x *.sh . -R  #fix permission of bash scripts
+script:
+  - touch /tmp/1.txt
+  
+  
+after_success:
+  -  ./github_private_key.sh
