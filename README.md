@@ -1,6 +1,5 @@
-github integrations
+github [integrations](https://github.com/travis-ci/github-services/tree/master/docs)
 ===================
-- Exploring[services](https://github.com/travis-ci/github-services/tree/master/docs) which integrate with github
 
 
 Examples:
