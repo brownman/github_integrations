@@ -19,7 +19,7 @@ before_install:
   #- export owner=brownman
   #- export repo=github_integrations
   - source config.cfg
-  - chmod u+x *.sh . -R
+  - chmod u+x ./travis.sh
 
   
 
