@@ -20,11 +20,13 @@ debug1(){
  # env
 }
 
-setup_git(){
+setup_git_global(){
   cd $HOME
   git config --global user.email "travis@travis-ci.org"
   git config --global user.name "Travis"
-  git config credential.helper "store --file=.git/credentials"
+}
+setup_git_local(){
+   git config credential.helper "store --file=.git/credentials"
   echo "https://${GH_TOKEN}:@github.com" > .git/credentials
 }
 
@@ -43,6 +45,8 @@ clone1(){
     git checkout -B $branch
     git add -f .  
   fi
+  
+  setup_git_local
 }
 
 rm2(){
@@ -73,7 +77,7 @@ steps(){
 
 
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-  setup_git
+  setup_git_global
   clone1
   
   override1
