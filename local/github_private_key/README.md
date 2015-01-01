@@ -9,13 +9,14 @@ Sharing Travis-CI generated files (http://sleepycoders.blogspot.co.il/2013/03/sh
 
 steps:
 ---
+
 - find out our github private key
 ```bash
 get_private_key.sh
 ```
 
-update .travis.yml
-----------
+**update .travis.yml**
+
 - update yaml key: 'env.global.GH_TOKEN'
 ```bash
 encrypt_private_key_for_use_in_travis.sh
