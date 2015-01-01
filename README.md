@@ -4,7 +4,8 @@ Github [Integrations](https://github.com/travis-ci/github-services/tree/master/d
 ===================
 
 
-**Mission:** 
+Mission
+-----
 - setup your Github repository to integrate with Travis 
 - configure Travis to deploy your products(like: a static website) to github-pages
 
