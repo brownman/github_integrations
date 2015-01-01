@@ -34,13 +34,14 @@ clone1(){
   #git checkout -B gh_pages
   $( git branch -r | grep $branch )
   res=$?
+  commander cd dir_gh_pages
+  
   if [ $res -eq 0 ];then
     git clone --depth=1 --quiet --branch=gh-pages https://${GH_TOKEN}@github.com/$owner/$repo.git . > /dev/null 
   else
     git checkout -B $branch
     git add -f .  
   fi
-  
 }
 
 rm2(){
@@ -49,10 +50,10 @@ rm2(){
   git rm -rf *
 }
 
-migrate1(){
-  cd gh-pages
+override1(){
+  commander cd $dir_gh_pages
   #commander rm2
-  dir_new=build/$TRAVIS_BUILD_NUMBER
+  local dir_new=build/$TRAVIS_BUILD_NUMBER
   mkdir -p $dir_new
   #
   ##mv  $dir_product $dir_new/media #/* files
@@ -80,7 +81,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   setup_git
   clone1
   
-  migrate1
+  override1
   push1
   test1
 fi
