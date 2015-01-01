@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -u
- 
+exec 2>/tmp/err
 
 #config
 branch='gh-pages'
@@ -43,7 +43,6 @@ clone1(){
     git clone --depth=1 --quiet --branch=$branch https://${GH_TOKEN}@github.com/$owner/$repo.git . > /dev/null 
   else
     git checkout -B $branch
-    git add -f .  
   fi
   
   setup_git_local
