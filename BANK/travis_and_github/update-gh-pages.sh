@@ -11,7 +11,7 @@ dir_gh_pages=/tmp/gh_pages
 
 debug1(){
   test -f .git/config && { cat .git/config; } 
-  env
+ # env
 }
 
 setup_git(){
@@ -35,6 +35,9 @@ clone1(){
     git checkout -B $branch
     git add -f .  
   fi
+  
+  rm2
+  
 }
 
 rm2(){
