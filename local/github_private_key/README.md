@@ -15,7 +15,7 @@ steps:
 get_private_key.sh
 ```
 
- update .travis.yml: 
+ update .travis.yml with encrypted keys:
 ```bash
 encrypt_private_key_for_use_in_travis.sh
 ```
