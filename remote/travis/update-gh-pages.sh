@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
-
-
-#shopt -s expand_aliases
 set -u
-#alias commander=eval
-dir_product=${dir_product:-/tmp/product}
-test -d $dir_product || { mkdir -p $dir_product; }
+ 
+
+#config
 branch='gh-pages'
+dir_product=${dir_product:-/tmp/product}
 dir_gh_pages=/tmp/gh_pages
+
+#ensure
+test -d $dir_product || { mkdir -p $dir_product; }
+test -d $dir_gh_pages || { mkdir -p $dir_gh_pages; }
 
 debug1(){
   test -f .git/config && { cat .git/config; } 
@@ -30,7 +32,7 @@ clone1(){
   commander cd $dir_gh_pages
   
   if [ $res -eq 0 ];then
-    git clone --depth=1 --quiet --branch=gh-pages https://${GH_TOKEN}@github.com/$owner/$repo.git . > /dev/null 
+    git clone --depth=1 --quiet --branch=$branch https://${GH_TOKEN}@github.com/$owner/$repo.git . > /dev/null 
   else
     git checkout -B $branch
     git add -f .  
@@ -53,7 +55,7 @@ override1(){
 
 push1(){
   git add -f .  
-  git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to gh-pages"
+  git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to $branch"
   git push -fq origin $branch #> /dev/null
 }
 
