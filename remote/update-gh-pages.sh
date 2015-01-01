@@ -5,8 +5,7 @@ set -u
 #config
 branch='gh-pages'
 dir_product=${dir_product:-/tmp/product}
-dir_gh_pages=$PWD
-#/tmp/gh_pages
+dir_gh_pages=/tmp/gh_pages
 
 
 #ensure
