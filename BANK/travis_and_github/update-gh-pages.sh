@@ -14,13 +14,6 @@ debug1(){
   env
 }
 
-gitbook(){
-  commander npm install gitbook -g
-  local fmt='Static Website'
-  local dir_readme="$dir_product"
-  commander "gitbook build $dir_readme --format='$fmt'--output=$dir_product/gitbook"
-}
-
 setup_git(){
   #cd $HOME
   git config --global user.email "travis@travis-ci.org"
