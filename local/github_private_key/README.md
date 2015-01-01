@@ -4,7 +4,6 @@ Travis + Github:
 - Assume we have a github repository
 - Assume we have a git branch: gh-pages
 
-Sharing Travis-CI generated files (http://sleepycoders.blogspot.co.il/2013/03/sharing-travis-ci-generated-files.html)
 
 
 steps:
@@ -20,3 +19,6 @@ get_private_key.sh
 encrypt_private_key_for_use_in_travis.sh
 ```
 
+reference:
+---
+ Sharing Travis-CI generated files (http://sleepycoders.blogspot.co.il/2013/03/sharing-travis-ci-generated-files.html)
