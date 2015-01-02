@@ -51,7 +51,7 @@ clone1(){
   echo we have remote branch named gh-pages? $res
   
   if [ $res -eq 1 ];then
-        git_create_branch $branch
+      commander  git_create_branch $branch
  fi
  #   commander dir_gh_pages=$PWD
     #trace git checkout
