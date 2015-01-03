@@ -44,6 +44,7 @@ git_override(){
   git checkout -B $branch
   touch README.md
   echo test >> README.md
+  git add -f README.md
   git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to $branch"
   git push -fq origin $branch #> /dev/null
   }
@@ -57,12 +58,14 @@ git_detect_remote(){
     echo
   fi
 }
-clone1(){
+git_clone1(){
+    commander git clone --depth=1 --quiet --branch=$branch https://${GH_TOKEN}@github.com/$owner/$repo.git $dir_gh_pages #> /dev/null 
+}
+git_stuff(){
   local res=0
   echo "Starting to update $branch"
   commander git_override
   #commander git_create_branch $branch
-  #commander git clone --depth=1 --quiet --branch=$branch https://${GH_TOKEN}@github.com/$owner/$repo.git $dir_gh_pages #> /dev/null 
   #setup_git_local
 }
 
@@ -100,9 +103,9 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   commander debug_git
   commander setup_git_global
   commander setup_git_local
-  commander clone1
-  commander override1
-  commander push1
+  commander git_stuff
+ # commander override1
+#  commander push1
 fi
 }
 
