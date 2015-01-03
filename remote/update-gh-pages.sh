@@ -17,6 +17,7 @@ test -d $dir_gh_pages || { mkdir -p $dir_gh_pages; }
 debug_git(){
   local dir=${1:-$PWD}
   test -f $dir/.git/config && { cat $dir/.git/config; } 
+  git branch -r
  # env
 }
 
@@ -26,10 +27,10 @@ setup_git_global(){
   git config --global user.name "Travis"
 }
 setup_git_local(){
-  debug_git
+  #debug_git
    git config credential.helper "store --file=.git/credentials"
   echo "https://${GH_TOKEN}:@github.com" > .git/credentials
-  debug_git
+  #debug_git
 }
 git_create_branch(){
   #http://www.zorched.net/2008/04/14/start-a-new-branch-on-your-remote-git-repository/
