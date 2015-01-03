@@ -18,7 +18,7 @@ before_install:
   - chmod u+x ./travis.sh
   
 script:
-  - bash -e ./travis.sh
+  - bash -c ./travis.sh
 
 #  
 #after_success:
