@@ -41,25 +41,19 @@ git pull
 }
 
 clone1(){
-  
   local res=0
   echo "Starting to update $branch"
-#  commander cd $HOME
-  git checkout -B gh_pages
-  ( git branch -r | grep $branch )
+ 
+  ( commander "git branch -r | grep $branch" )
   res=$?
-  echo we have remote branch named gh-pages? $res
+  echo we have remote branch named $branch ? $res
   
   if [ $res -eq 1 ];then
-      commander  git_create_branch $branch
- fi
- #   commander dir_gh_pages=$PWD
-    #trace git checkout
-    #commander git checkout -B $branch
-    trace git clone
-    git clone --depth=1 --quiet --branch=$branch https://${GH_TOKEN}@github.com/$owner/$repo.git $dir_gh_pages > /dev/null 
+     commander  git_create_branch $branch
+  fi
 
-  
+  trace git clone
+  commander git clone --depth=1 --quiet --branch=$branch https://${GH_TOKEN}@github.com/$owner/$repo.git $dir_gh_pages #> /dev/null 
   #setup_git_local
 }
 
