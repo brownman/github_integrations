@@ -15,6 +15,9 @@ branches:
     - master
     
 before_install:
+  - cat .git/config
+ 
+install:
   - chmod u+x ./travis.sh
   
 script:
