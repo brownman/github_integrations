@@ -34,7 +34,7 @@ setup_git_local(){
   #debug_git
 }
 ################################################# the product
-git_add_dir_product(){
+git_mv_dir_product(){
   #commander rm2
   local dir_new
   dir_new="build/$TRAVIS_BUILD_NUMBER"
@@ -46,9 +46,12 @@ git_add_dir_product(){
 }
 
 git_add_commit_push(){
-  commander git rm -rf *
-  commander git_add_dir_product
-  commander git add -f .  
+  if [ "$repo" = 'github_integrations' ];then
+    commander git rm -rf *
+    commander git_mv_dir_product
+  else
+    commander git add -f .  
+  fi
   commander git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to $branch"
   commander git push -fq origin $branch 
 }
