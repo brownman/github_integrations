@@ -94,8 +94,7 @@ git_push1(){
 
 git_checkout1(){
   git checkout -b $branch
-  rm2
-  git_add_product
+
 }
 
 push1(){
@@ -125,7 +124,9 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   commander setup_git_global
   commander setup_git_local
   commander git_fix_remote
-    git_checkout1
+  commander git_checkout1
+  commander rm2
+  commander git_add_product
   commander git_push1
   #commander git_stuff
  # commander override1
