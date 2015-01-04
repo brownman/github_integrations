@@ -83,6 +83,21 @@ override1(){
   ls -lR --sort=size $dir_product > $dir_new/log.txt  #_${TRAVIS_BUILD_NUMBER}.txt
   mv $dir_product $dir_new/
 }
+git_override2(){
+    git branch -r
+  
+  branch=test3
+  git checkout -B $branch
+  rm2
+ 
+  #change
+  touch README.md
+  git add -f README.md 
+  
+  
+  git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to $branch"
+  git push -fq origin $branch #> /dev/null
+}
 
 push1(){
   commander cd $dir_gh_pages
@@ -109,21 +124,9 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   commander echo "PWD: $PWD"
   #commander debug_git
   commander setup_git_global
-  commander git_fix_remote
-  git branch -r
-  
-  branch=test3
-  git checkout -B $branch
-  rm2
   commander setup_git_local
- 
-  #change
-  touch README.md
-  git add -f README.md 
-  
-  
-  git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to $branch"
-  git push -fq origin $branch #> /dev/null
+  commander git_fix_remote
+  commander git_override2
   
   #commander git_stuff
  # commander override1
