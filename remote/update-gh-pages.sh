@@ -33,54 +33,26 @@ setup_git_local(){
   echo "https://${GH_TOKEN}:@github.com" > .git/credentials
   #debug_git
 }
-
-
-git_create_branch(){
-  #http://www.zorched.net/2008/04/14/start-a-new-branch-on-your-remote-git-repository/
-local  branch_name = $1
-git push origin origin:refs/heads/${branch_name}
-git fetch origin
-git checkout --track -b ${branch_name} origin/${branch_name}
-git pull
-}
-
-git_clone1(){
-    commander git clone --depth=1 --quiet --branch=$branch https://${GH_TOKEN}@github.com/$owner/$repo.git $dir_gh_pages #> /dev/null 
-}
-
- 
-
-rm2(){
-  commander git rm -rf *
-}
-
+################################################# the product
 git_add_dir_product(){
   #commander rm2
   local dir_new
   dir_new="build/$TRAVIS_BUILD_NUMBER"
   mkdir -p $dir_new
   ### summary
-  echo '```base' > README.md
-  env | grep -v GH_TOKEN | grep -v password >> $dir_product/README.md
-  echo '```' >> README.md
-  ls -lR --sort=size $dir_product > $dir_product/log.txt  #_${TRAVIS_BUILD_NUMBER}.txt
-  mv $dir_product/* $dir_new
+   env | grep -v GH_TOKEN | grep -v password > $dir_product/env.txt
+   ls -lR --sort=size $dir_product > $dir_product/log.txt  #_${TRAVIS_BUILD_NUMBER}.txt
+   mv $dir_product $dir_new
 }
 
 git_add_commit_push(){
-  git rm -rf *
-  git_add_dir_product
-  git add -f .  
-  git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to $branch"
-  git push -fq origin $branch 
+  commander git rm -rf *
+  commander git_add_dir_product
+  commander git add -f .  
+  commander git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to $branch"
+  commander git push -fq origin $branch 
 }
 
-git_checkout1(){
-  commander git checkout -B $branch
-}
-
- 
- 
 git_fix_remote(){
 cat .git/config | grep 'git://'
 local old_string='git://'
@@ -99,8 +71,9 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   commander setup_git_global
   commander setup_git_local
   commander git_fix_remote
-  commander git_checkout1
+  commander git checkout -B $branch
   commander git_add_commit_push
+
   #commander git_stuff
  # commander override1
 #  commander push1
