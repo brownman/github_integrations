@@ -23,15 +23,12 @@ debug_git(){
 }
 ################################################# git config
 setup_git_global(){
-  #cd $HOME
   git config --global user.email "travis@travis-ci.org"
   git config --global user.name "Travis"
 }
 setup_git_local(){
-  #debug_git
-   git config credential.helper "store --file=.git/credentials"
+  git config credential.helper "store --file=.git/credentials"
   echo "https://${GH_TOKEN}:@github.com" > .git/credentials
-  #debug_git
 }
 ################################################# the product
 git_mv_dir_product(){
@@ -44,7 +41,6 @@ git_mv_dir_product(){
    ls -lR --sort=size $dir_product > $dir_product/log.txt  #_${TRAVIS_BUILD_NUMBER}.txt
    mv $dir_product $dir_new
 }
-
 git_add_commit_push(){
   if [ "$repo" = 'github_integrations' ];then
     commander git rm -rf *
@@ -55,7 +51,6 @@ git_add_commit_push(){
   commander git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to $branch"
   commander git push -fq origin $branch 
 }
-
 git_fix_remote(){
 cat .git/config | grep 'git://'
 local old_string='git://'
@@ -64,7 +59,7 @@ local file1=".git/config"
 sed -i s@$old_string@$new_string@g $file1
 cat $file1
 }
-
+########################################### steps
 steps(){
 #commander cd $HOME
 
@@ -75,7 +70,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   commander setup_git_local
   commander git_fix_remote
   commander git checkout -B $branch
-  commander git_add_commit_push
+    git_add_commit_push
 
   #commander git_stuff
  # commander override1
