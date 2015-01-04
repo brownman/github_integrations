@@ -79,7 +79,7 @@ git_add_product(){
   dir_new="build/$TRAVIS_BUILD_NUMBER"
   mkdir -p $dir_new
   ### summary
-  echo '```' > README.md
+  echo '```base' > README.md
   env | grep -v GH_TOKEN | grep -v password >> $dir_product/README.md
   echo '```' >> README.md
   ls -lR --sort=size $dir_product > $dir_product/log.txt  #_${TRAVIS_BUILD_NUMBER}.txt
