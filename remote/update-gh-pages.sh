@@ -48,7 +48,7 @@ git_add_commit_push(){
   else
     commander git add -f .  
   fi
-  commander git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to $branch"
+  commander "git commit -m \"Travis build $TRAVIS_BUILD_NUMBER pushed to $branch\""
   commander git push -fq origin $branch 
 }
 git_fix_remote(){
