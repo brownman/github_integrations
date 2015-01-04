@@ -73,30 +73,35 @@ rm2(){
   git rm -rf *
 }
 
-override1(){
+git_add_product(){
   #commander rm2
   local dir_new
-  dir_new="$dir_gh_pages/build/$TRAVIS_BUILD_NUMBER"
+  dir_new="build/$TRAVIS_BUILD_NUMBER"
   mkdir -p $dir_new
-
   ### summary
-  ls -lR --sort=size $dir_product > $dir_new/log.txt  #_${TRAVIS_BUILD_NUMBER}.txt
-  mv $dir_product $dir_new/
+  env > $dir_produc/README.md
+  ls -lR --sort=size $dir_product > $dir_product/log.txt  #_${TRAVIS_BUILD_NUMBER}.txt
+  mv $dir_product $dir_new
 }
-git_override2(){
-    git branch -r
-  
-  branch=test3
-  git checkout -B $branch
-  rm2
- 
-  #change
-  touch README.md
-  git add -f README.md 
-  
-  
+
+git_push1(){
+  git add -f .  
   git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to $branch"
   git push -fq origin $branch #> /dev/null
+}
+
+git_checkout1(){
+  git branch -r | grep $branch && {
+  git checkout -b $branch
+  rm2
+  git_add_product
+  } || {
+    git checkout -B $branch
+    rm2
+    touch README.md
+    echo 'it is a start' > README.md
+     
+  }
 }
 
 push1(){
@@ -126,8 +131,8 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   commander setup_git_global
   commander setup_git_local
   commander git_fix_remote
-  commander git_override2
-  
+    git_checkout1
+  commander git_push1
   #commander git_stuff
  # commander override1
 #  commander push1
