@@ -91,17 +91,9 @@ git_push1(){
 }
 
 git_checkout1(){
-  ( git branch -r | grep $branch ) && {
   git checkout -b $branch
   rm2
   git_add_product
-  } || {
-    git checkout -B $branch
-    rm2
-    touch README.md
-    echo 'it is a start' > README.md
-     
-  }
 }
 
 push1(){
