@@ -46,18 +46,19 @@ git_add_commit_push(){
     commander git rm -rf *
     commander git_mv_dir_product
   else
-    commander git add -f .  
+   echo github_integrations > .gitignore
   fi
+  commander git add -f .  
   commander "git commit -m \"Travis build $TRAVIS_BUILD_NUMBER pushed to $branch\""
   commander git push -fq origin $branch 
 }
 git_fix_remote(){
-cat .git/config | grep 'git://'
-local old_string='git://'
-local new_string='https://'
-local file1=".git/config"
-sed -i s@$old_string@$new_string@g $file1
-cat $file1
+  cat .git/config | grep 'git://'
+  local old_string='git://'
+  local new_string='https://'
+  local file1=".git/config"
+  sed -i s@$old_string@$new_string@g $file1
+  cat $file1
 }
 ########################################### steps
 steps(){
