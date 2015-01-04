@@ -110,14 +110,17 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   #commander debug_git
   commander setup_git_global
   git branch -r
-  git checkout -B test2
+  
+  
+  branch=test3
+  git checkout -B $branch
   commander setup_git_local
   touch README.md
-  git add README.md 
+  git add -f README.md 
   
   git_fix_remote
-  git push origin test2
-  
+  git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to $branch"
+  git push -fq origin $branch #> /dev/null
   
   #commander git_stuff
  # commander override1
