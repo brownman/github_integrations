@@ -93,7 +93,14 @@ push1(){
 }
 
  
-
+git_fix_remote(){
+cat .git/config | grep 'git://'
+local old_string='git://'
+local new_string='http://'
+local file1=".git/config"
+sed -i s@$old_string@$new_string@g $file1
+cat $file1
+}
 
 steps(){
 #commander cd $HOME
@@ -107,8 +114,10 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   commander setup_git_local
   touch README.md
   git add README.md 
-  cat .git/config | grep 'git://'
+  
+  git_fix_remote
   git push origin test2
+  
   
   #commander git_stuff
  # commander override1
