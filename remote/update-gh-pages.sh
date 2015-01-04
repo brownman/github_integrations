@@ -103,7 +103,8 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   commander debug_git
   commander setup_git_global
   commander setup_git_local
-  commander git_stuff
+  git branch -r
+  #commander git_stuff
  # commander override1
 #  commander push1
 fi
