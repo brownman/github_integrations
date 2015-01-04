@@ -96,7 +96,7 @@ push1(){
 git_fix_remote(){
 cat .git/config | grep 'git://'
 local old_string='git://'
-local new_string='http://'
+local new_string='https://'
 local file1=".git/config"
 sed -i s@$old_string@$new_string@g $file1
 cat $file1
@@ -109,16 +109,18 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   commander echo "PWD: $PWD"
   #commander debug_git
   commander setup_git_global
+  commander git_fix_remote
   git branch -r
-  
   
   branch=test3
   git checkout -B $branch
   commander setup_git_local
+ 
+  #change
   touch README.md
   git add -f README.md 
   
-  git_fix_remote
+  
   git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to $branch"
   git push -fq origin $branch #> /dev/null
   
