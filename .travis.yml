@@ -18,9 +18,10 @@ before_install:
   - cat .git/config
  
 install:
-  - chmod u+x ./travis.sh
+  - git branch -r
   
 script:
+  - chmod u+x ./travis.sh
   - bash -c ./travis.sh
 
 #  
