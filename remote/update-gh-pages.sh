@@ -114,6 +114,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   
   branch=test3
   git checkout -B $branch
+  rm2
   commander setup_git_local
  
   #change
