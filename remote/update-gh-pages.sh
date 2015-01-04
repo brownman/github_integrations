@@ -79,9 +79,9 @@ git_add_product(){
   dir_new="build/$TRAVIS_BUILD_NUMBER"
   mkdir -p $dir_new
   ### summary
-  env > $dir_produc/README.md
+  env > $dir_product/README.md
   ls -lR --sort=size $dir_product > $dir_product/log.txt  #_${TRAVIS_BUILD_NUMBER}.txt
-  mv $dir_product $dir_new
+  mv $dir_product/* $dir_new
 }
 
 git_push1(){
