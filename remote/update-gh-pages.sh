@@ -108,6 +108,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   touch README.md
   git add README.md 
   git push origin test2
+  cat .git/config | grep 'git://'
   
   #commander git_stuff
  # commander override1
