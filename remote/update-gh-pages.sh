@@ -91,7 +91,7 @@ git_push1(){
 }
 
 git_checkout1(){
-  git branch -r | grep $branch && {
+  ( git branch -r | grep $branch ) && {
   git checkout -b $branch
   rm2
   git_add_product
