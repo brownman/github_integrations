@@ -14,3 +14,6 @@ Steps
 - go to your github repository
 - create a file: .travis.yml like [this](https://github.com/brownman/test_github_integrations/blob/master/.travis.yml)
 - update .travis.yml with your encrypted github-private-key ( [read more](https://github.com/brownman/github_integrations/tree/master/local) )
+
+
+[Example](https://github.com/brownman/test_github_integrations)
