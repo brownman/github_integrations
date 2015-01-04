@@ -7,20 +7,21 @@ branch='gh-pages'
 dir_product=${dir_product:-/tmp/product}
 dir_gh_pages=/tmp/gh_pages
 
-
 #ensure
 test -v owner
 test -v repo
 test -d $dir_product || { mkdir -p $dir_product; }
 test -d $dir_gh_pages || { mkdir -p $dir_gh_pages; }
 
+
+################################################# git debug
 debug_git(){
   local dir=${1:-$PWD}
   test -f $dir/.git/config && { cat $dir/.git/config; } 
   git branch -r
  # env
 }
-
+################################################# git config
 setup_git_global(){
   #cd $HOME
   git config --global user.email "travis@travis-ci.org"
@@ -32,6 +33,8 @@ setup_git_local(){
   echo "https://${GH_TOKEN}:@github.com" > .git/credentials
   #debug_git
 }
+
+
 git_create_branch(){
   #http://www.zorched.net/2008/04/14/start-a-new-branch-on-your-remote-git-repository/
 local  branch_name = $1
@@ -40,40 +43,18 @@ git fetch origin
 git checkout --track -b ${branch_name} origin/${branch_name}
 git pull
 }
-git_override(){
-  git checkout -B $branch
-  touch README.md
-  echo test >> README.md
-  git add -f README.md
-  git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to $branch"
-  git push -fq origin $branch #> /dev/null
-  }
-  
-git_detect_remote(){
-  ( commander "git branch -r | grep $branch" )
-  res=$?
-  echo we have remote branch named $branch ? $res
-  
-  if [ $res -eq 1 ];then
-    echo
-  fi
-}
+
 git_clone1(){
     commander git clone --depth=1 --quiet --branch=$branch https://${GH_TOKEN}@github.com/$owner/$repo.git $dir_gh_pages #> /dev/null 
 }
-git_stuff(){
-  local res=0
-  echo "Starting to update $branch"
-  commander git_override
-  #commander git_create_branch $branch
-  #setup_git_local
-}
+
+ 
 
 rm2(){
-  git rm -rf *
+  commander git rm -rf *
 }
 
-git_add_product(){
+git_add_dir_product(){
   #commander rm2
   local dir_new
   dir_new="build/$TRAVIS_BUILD_NUMBER"
@@ -86,25 +67,19 @@ git_add_product(){
   mv $dir_product/* $dir_new
 }
 
-git_push1(){
+git_add_commit_push(){
+  git rm -rf *
+  git_add_dir_product
   git add -f .  
   git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to $branch"
-  git push -fq origin $branch #> /dev/null
+  git push -fq origin $branch 
 }
 
 git_checkout1(){
-  git checkout -b $branch
-
+  commander git checkout -B $branch
 }
 
-push1(){
-  commander cd $dir_gh_pages
-  commander ls -lt
-  git add -f .  
-  git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to $branch"
-  git push -fq origin $branch #> /dev/null
-}
-
+ 
  
 git_fix_remote(){
 cat .git/config | grep 'git://'
@@ -125,9 +100,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   commander setup_git_local
   commander git_fix_remote
   commander git_checkout1
-  commander rm2
-  commander git_add_product
-  commander git_push1
+  commander git_add_commit_push
   #commander git_stuff
  # commander override1
 #  commander push1
