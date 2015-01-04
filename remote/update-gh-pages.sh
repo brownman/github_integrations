@@ -46,9 +46,9 @@ git_add_commit_push(){
     commander git rm -rf *
     commander git_mv_dir_product
   else
-   echo github_integrations > .gitignore
+   echo github_integrations >> .gitignore
   fi
-  commander git add -f .  
+  commander git add .  
   commander "git commit -m \"Travis build $TRAVIS_BUILD_NUMBER pushed to $branch\""
   commander git push -fq origin $branch 
 }
