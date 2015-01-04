@@ -100,10 +100,15 @@ steps(){
 
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   commander echo "PWD: $PWD"
-  commander debug_git
+  #commander debug_git
   commander setup_git_global
-  commander setup_git_local
   git branch -r
+  git checkout -B test2
+  commander setup_git_local
+  touch README.md
+  git add README.md 
+  git push origin test2
+  
   #commander git_stuff
  # commander override1
 #  commander push1
