@@ -16,9 +16,11 @@ branches:
     
 before_install:
   - cat .git/config
+  - git branch -r
  
 install:
-  - git branch -r
+  - sudo apt-get install -y -q tree 
+  - tree
   
 script:
   - export dir_product=/tmp/product
