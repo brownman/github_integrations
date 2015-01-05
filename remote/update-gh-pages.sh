@@ -6,6 +6,7 @@ set -u
 branch='gh-pages'
 ( test -v dir_product && test -d $dir_product )  || { echo 1>&2 update .travis.yml with the directory u want to upload to github pages; exit 1; }
 
+
 #ensure
 test -v owner
 test -v repo
@@ -69,6 +70,7 @@ steps(){
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   commander echo "PWD: $PWD"
   #commander debug_git
+  commander tree $dir_product
   commander setup_git_global
   commander setup_git_local
   commander git_fix_remote
