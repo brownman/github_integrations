@@ -45,7 +45,7 @@ git_add_commit_push(){
    echo github_integrations >> .gitignore
    #http://stackoverflow.com/questions/20192070/how-to-move-all-files-including-hidden-files-into-parent-directory-via
    shopt -s dotglob
-   commander mv -rf $dir_product/* .
+   commander cp -rf $dir_product/* .
    shopt -u dotglob
   fi
   
