@@ -4,7 +4,7 @@ set -u
 
 #config
 branch='gh-pages'
-dir_product=${dir_product:-/tmp/product}
+dir_product=${dir_product:-app}
 dir_gh_pages=/tmp/gh_pages
 
 #ensure
@@ -47,7 +47,10 @@ git_add_commit_push(){
     commander git_mv_dir_product
   else
    echo github_integrations >> .gitignore
+   #http://stackoverflow.com/questions/20192070/how-to-move-all-files-including-hidden-files-into-parent-directory-via
+   shopt -s dotglob
    commander mv -rf $dir_product/* .
+   shopt -u dotglob
   fi
   
   #commander mv -rf $dir_product/* .
