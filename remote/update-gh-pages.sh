@@ -4,16 +4,11 @@ set -u
 
 #config
 branch='gh-pages'
-dir_product=${dir_product:-app}
-dir_gh_pages=/tmp/gh_pages
+( test -v dir_product && test -d $dir_product )  || { echo 1>&2 update .travis.yml with the directory u want to upload to github pages; exit 1; }
 
 #ensure
 test -v owner
 test -v repo
-test -d $dir_product || { mkdir -p $dir_product; }
-test -d $dir_gh_pages || { mkdir -p $dir_gh_pages; }
-
-
 ################################################# git debug
 debug_git(){
   local dir=${1:-$PWD}
