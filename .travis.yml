@@ -21,6 +21,8 @@ install:
   - git branch -r
   
 script:
+  - export dir_product=/tmp/product
+  - touch $dir_product/1.txt
   - chmod u+x ./travis.sh
   - bash -c ./travis.sh
 
