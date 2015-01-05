@@ -70,7 +70,6 @@ steps(){
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   commander echo "PWD: $PWD"
   #commander debug_git
-  commander tree $dir_product
   commander setup_git_global
   commander setup_git_local
   commander git_fix_remote
