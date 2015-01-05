@@ -22,6 +22,7 @@ install:
   
 script:
   - export dir_product=/tmp/product
+  - mkdir -p $dir_product
   - touch $dir_product/1.txt
   - chmod u+x ./travis.sh
   - bash -c ./travis.sh
