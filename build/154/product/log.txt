@@ -1,0 +1,5 @@
+/tmp/product:
+total 8
+-rw-rw-r-- 1 travis travis 5963 Jan 11 12:21 env.txt
+-rw-rw-r-- 1 travis travis    0 Jan 11 12:21 1.txt
+-rw-rw-r-- 1 travis travis    0 Jan 11 12:21 log.txt
