@@ -16,5 +16,5 @@ echo 'https://github.com/brownman/github_integrations';
 exit 1;
 }
 
-bash -c $dir_self/remote/update-gh-pages.sh
+( bash -e $dir_self/remote/update-gh-pages.sh )
 
