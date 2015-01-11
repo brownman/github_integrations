@@ -19,8 +19,9 @@ sudo apt-get install xsel
 ```bash
 $ get_private_key.sh
 ```
-
- update .travis.yml with encrypted keys:
+-  go to: https://github.com/${user}/${repo}/settings/hooks and add service: travis (press button: update_service)
+ 
+update .travis.yml with encrypted keys:
 ```bash
 $ encrypt_private_key_for_use_in_travis.sh
 ```
