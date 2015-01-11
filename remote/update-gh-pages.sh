@@ -73,7 +73,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   commander setup_git_global
   commander setup_git_local
   commander git_fix_remote
-  commander git checkout -B $branch
+  commander git checkout --bare -B $branch
     git_add_commit_push
 
   #commander git_stuff
